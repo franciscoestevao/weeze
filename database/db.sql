@@ -3,7 +3,8 @@
 CREATE TABLE utilizador (
 	username 		VARCHAR PRIMARY KEY NOT NULL,
 	nome 			VARCHAR NOT NULL,
-	password 		VARCHAR NOT NULL
+	password 		VARCHAR NOT NULL,
+	img 			INTEGER NOT NULL
 );
 
 CREATE TABLE evento (

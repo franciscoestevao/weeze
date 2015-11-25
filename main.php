@@ -11,30 +11,50 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <html>
 	<head>
 		<meta charset="UTF-8">
-		
-		<h1>BASIL AFTER LOGIN</h1>
-		<a href="action/logout.php">Logout</a>
-		<img src="http://www.gourmetgarden.com/sites/gourmetgarden.sites.go1.com.au/files/atp_gen_gourm_0210_189_basil.jpg"
-		 alt="basil" width="300" height="200">
+		<link rel="stylesheet" type="text/css"  href="css/styleMain.css">
 	</head>
 
 	<body>
-		<form method="POST" action='action/register.php'>
-			Username:
-			<input type="text" name="user">
-			<br>
-			Nome:
-			<input type="text" name="nome">
-			<br>
-			Password:
-			<input type="password" name="pass">
-			<br>
-			Confirm password:
-			<input type="password" name="cpass">
-			<br>
-			<input id="button" type="submit" name="submit" value="Registar">
-			<br><br>
-		</form>
+		<div id="header">
+           <img src="img/logoTopWhite.png" height="25px">  
+            <a href="http://www.google.com"><p>Know more about this project</p></a><div id="knowMore">
+            
+        </div>
+        </div>
+        
+
+        <div id="nav">
+            <div class="user">
+                <div class="photo">
+                <h1><?php echo $_SESSION['img'];?></h1>
+                </div>
+                <div class="info">
+                <h1>Welcome back, <?php echo $_SESSION['username'];?>!</h1>    
+                <a href="action/logout.php" class="link"><p><img src="img/logout.svg" height="10px">  Logout</p></a>
+                <a href="action/logout.php" class="link"><p><img src="img/config.svg" height="10px">  Settings</p></a>  
+                </div>
+            </div>
+            
+            <div class="separator">
+            </div>
+        </div>
+
+        <div id="section">
+        <h1>London</h1>
+        <p>
+        London is the capital city of England. It is the most populous city in the United Kingdom,
+        with a metropolitan area of over 13 million inhabitants.
+        </p>
+        <p>
+        Standing on the River Thames, London has been a major settlement for two millennia,
+        its history going back to its founding by the Romans, who named it Londinium.
+        </p>
+        </div>
+
+        <div id="footer">
+        <p>weeze - event manager | developed by Francisco Estêvão & Tomás Tavares | © LTW FEUP 2015/2016</p> 
+        </div>
+
 	</body>
 
 </html>

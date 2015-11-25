@@ -11,10 +11,14 @@ function Login()
 		
         $stmt = $db->prepare("SELECT * FROM utilizador WHERE username = '".$username."' AND password = '".$password."'");
 		$stmt->execute();
-		$result= $stmt->fetchAll();
+		$result = $stmt->fetchAll();
         if(count($result)){
-             $_SESSION['loggedin'] = true;
-             $_SESSION['username'] = $username;
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            foreach ($result as $row){
+                $img = $row['img'];
+            }
+            $_SESSION['img']=$img;
             echo "<script> window.location.assign('../main.php'); </script>";
             //header('Location: main.php');
             
