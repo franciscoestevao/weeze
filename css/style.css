@@ -1,5 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body, html{
     width: 100%;
@@ -39,6 +38,14 @@ body, html{
     
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 #home-header {
     background: url(../img/bg1.jpeg);
     max-height: 800px;
@@ -65,15 +72,11 @@ body, html{
     border-radius: 10px;
 }
 
+
 #home-header .actions-index .box p{
     color: black;  
 }
 
-#home-header .actions-index .box table{
-    padding: 0;
-    margin: 0;
-    border:0;
-}
 #home-header .actions-index .box h1{
     color: #518fa7;
     font-size: 1em;
