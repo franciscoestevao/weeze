@@ -6,6 +6,7 @@ body, html{
 	margin:0;
 	padding:0;
     font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
 	color: #19a4c2;
@@ -17,9 +18,14 @@ body, html{
     padding:1em;
     padding-left: 1em;
 }
+
+a {
+  text-decoration: none;
+}
+
 #nav {
     line-height:30px;
-    
+    text-decoration: none;
     height:100%;
     width:15%;
     float:left;
@@ -45,7 +51,7 @@ body, html{
 
 #footer p{
     color: white;
-    font-size: 0.
+    font-size: 0.7em;
 }
 
 #header a{
@@ -98,6 +104,10 @@ body, html{
     padding: 1em;
 }
 
+#nav p{
+    text-decoration:none;
+}
+
 #nav.user .info{
     float: right;
 }
@@ -111,12 +121,16 @@ body, html{
     padding: 0;
 }
 
+#nav a p{
+    text-decoration: none;
+}
+
 #nav .user .info .link{
     text-transform: uppercase;
     font-size: 0.7em;
     text-align: right;
     line-height: 0em;
-    text-decoration: none;
+    text-decoration:none;
     color: #999999;
     margin:0;
     padding: 0;
@@ -126,5 +140,18 @@ body, html{
     height: 0.1px;
     margin: 2em 0em 2em 0em;
     background-color: #eeeeee;
+}
+
+#nav .list a p{
+    color: #999999;
+    line-height: 0;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+#nav .list a p:hover{
+    color: #999999;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: 0.1s;
 }
 </style>
