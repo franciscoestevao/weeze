@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css"  href="css/style.css">
+	</head>
+
+	<body>
+        <nav id="topmenu" class="navbar">
+            <img src="img/logoTop.png" height="50px">       
+        </nav>
+        <div id="home-header">
+            <div class="actions-index">
+                <div class="box">
+                    <table>
+                    <tr>
+                    <td>
+                        <h1>REGISTER</h1>
+                        <form method="POST" action='action/register.php'>
+                           <table>
+                            <tr>
+                                <td>
+                                <p>Username:</p>
+                                </td>
+                                <td>
+                                <input type="text" name="user">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <p>Nome:</p>
+                                </td>
+                                <td>
+                                <input type="text" name="nome">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <p>Password:</p>
+                                </td>
+                                <td>
+                                <input type="password" name="pass">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <p>Confirmar Password:</p>
+                                </td>
+                                <td>
+                                <input type="password" name="cpass">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input id="button" type="submit" name="submit" value="Register">
+                                </td>
+                                <td>
+                                
+                                </td>
+                            </tr>
+                            </table>
+                        </form>
+                    </td>
+                    <td>
+                        <h1>LOGIN</h1>
+                        <form method="POST" action='action/login.php'>
+                            Username:
+                            <input type="text" name="userLog">
+                            <br>
+                            Password:
+                            <input type="password" name="passLog">
+                            <br>
+                            <input id="button" type="submit" name="login" value="Login">
+                        <br><br>
+                        </form>
+                    </td>
+                    </tr>        
+                </table>
+                
+                </div>
+            </div>	
+        </div>
+    
+	</body>
+
+</html>
+

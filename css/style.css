@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
+
+body, html{
+    width: 100%;
+	height:100%;
+	margin:0;
+	padding:0;
+    font-family: 'Open Sans', sans-serif;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	color: #5a5a5a;
+    
+        background: url(../img/bg1.jpeg);
+    max-height: 800px;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: #518fa7;
+}
+
+#topmenu {
+	padding: 10px;
+	transition: all 0.8s;
+}
+
+#topmenu.navbar {
+	background-color: rgba(255,255,255,0.9);;
+    width: 100%;
+    max-height: 60px;
+    padding-left: 3em;
+    padding-bottom: 1em;
+    vertical-align:middle;
+}
+
+#topmenu.navbar h1{
+    color: azure;
+    
+}
+
+#home-header {
+    background: url(../img/bg1.jpeg);
+    max-height: 800px;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: #cfcfcf;
+}
+
+#home-header .actions-index{
+	height: 750px;
+	background-attachment: fixed;
+}
+
+#home-header .actions-index .box{
+    padding: 0.5em;
+    background-color: rgba(255,255,255,0.8);
+    max-width: 45%;
+    transition: all 0.8s; 
+    margin-left: 50%;
+    margin-top: 10%;
+    position: absolute;
+    border-radius: 10px;
+}
+
+#home-header .actions-index .box p{
+    color: black;  
+}
+
+#home-header .actions-index .box table{
+    padding: 0;
+    margin: 0;
+    border:0;
+}
+#home-header .actions-index .box h1{
+    color: #518fa7;
+    font-size: 1em;
+    
+}
