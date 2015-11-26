@@ -25,7 +25,7 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['img'] = $img;
-            header('Location: ../main.php');
+            header('Location: my_events.php');
         }
 
 }

@@ -42,39 +42,13 @@
             </div>
             
             <div class="list">
-                <a href="http://google.com"><p>My Events</p></a>
+                <a href="redirect_create_event.php"><p>Create Event</p><a/>
             </div>
         </div>
 
         <div id="section">
-			<h1>New Event</h1>
-			<form class="new-event-form" action="new_event.php" method="post">
-					<label>Nome do evento
-						<input type="text" name="nome_do_evento" class="input" id="nome" autocomplete="off" required="true">
-					</label>
-					<br>
-					<label>Data do evento
-						<input type="date" name="data_do_evento" class="input" id="data" autocomplete="off" required="true">
-					</label>
-					<br>
-					<label>Local do evento
-						<input type="text" name="local_do_evento" class="input" id="local" autocomplete="off">
-					</label>
-					<br>
-					<label>Descrição do evento
-						<textarea type="textarea" name="descricao_do_evento" class="input" id="descricao" autocomplete="off" required="true" placeholder="Insira um pequeno texto que descreva o evento" rows="5" cols="40"></textarea>
-					</label>
-					<br>
-					<label>Tipo de evento
-						<input type="text" name="tipo_do_evento" class="input" id="tipo" autocomplete="off" required="true">
-					</label>
-					<br>
-					<label>Imagem do evento
-						<input type="file" name="imagem_do_evento" class="input" id="imagem" autocomplete="off" required="true" accept="image/*">
-					</label>
-					<br><br>	
-					<input id="button" type="submit" name="submit" class="button" value="Submeter">
-			</form>
+			<h1>My Events</h1>
+			
 			
         </div>
 
