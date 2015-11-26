@@ -3,6 +3,8 @@
 <html>
 
 	<head>
+
+		<script src="index.js" language="javascript" type="text/javascript"></script>
 		<meta charset="UTF-8">
         <link rel="stylesheet" type="text/css"  href="css/style.css">
 	</head>
@@ -11,6 +13,40 @@
         <nav id="topmenu" class="navbar">
             <img src="img/logoTop.png" height="50px">       
         </nav>
+        
+
+		<div class="form-wrap">
+			<div class="tabs">
+				<h3 class="login-tab"><a class="active" href="#login-tab-content">Login</a></h3>
+				<h3 class="signup-tab"><a  href="#signup-tab-content">Sign Up</a></h3>
+			</div>
+
+			<div class="tabs-content">
+				<div id="signup-tab-content">
+					<form class="signup-form" action="action/register.php" method="post">
+						<input type="text" name="username" class="input" id="username" autocomplete="off" placeholder="Username">
+						<input type="text" name="nome" class="input" id="user_name" autocomplete="off" placeholder="Name">
+						<input type="password" name="pass" class="input" id="user_pass" autocomplete="off" placeholder="Password">
+						<input type="password" name="cpass" class="input" id="user_cpass" autocomplete="off" placeholder="Confirm Password">
+						<input id="button" type="submit" name="submit" class="button" value="Register">
+					</form>
+				</div>
+
+				<div id="login-tab-content" class="active">
+					<form class="login-form" action="action/login.php" method="post">
+						<input type="text" name="userLog" class="input" id="user_login" autocomplete="off" placeholder="Username">
+						<input type="password" name="userPass" class="input" id="user_pass" autocomplete="off" placeholder="Password">
+						<input id="button" type="submit" name="login" class="button" value="Login">
+					</form>
+				</div>
+			</div>
+		</div>
+      
+      
+      
+      
+        
+        <!--
         <div id="home-header">
             <div class="actions-index">
                 <div class="box">
@@ -81,7 +117,9 @@
                 
                 </div>
             </div>	
-        </div>
+        </div>		-->
+    
+		
     
 	</body>
 
