@@ -1,5 +1,3 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
 jQuery(document).ready(function($) {
   tab = $('.tabs h3 a');
 

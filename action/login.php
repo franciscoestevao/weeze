@@ -19,12 +19,13 @@ function Login()
                 $img = $row['img'];
             }
             $_SESSION['img']=$img;
-            echo "<script> window.location.assign('../main.php'); </script>";
-            //header('Location: main.php');
+            
+            //echo "<script> window.location.assign('../main.php'); </script>";
+            header('Location: ../main.php');
             
         }  else{
-            echo "<script> window.location.assign('../index.html'); </script>";
-            //header('Location: index.html');
+            //echo "<script> window.location.assign('../index.html'); </script>";
+            header('Location: ../index.html');
         }        
 }
 

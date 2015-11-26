@@ -9,8 +9,8 @@ body, html{
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
 	color: #5a5a5a;
-    
-        background: url(../img/bg1.jpeg);
+    /*alterar isto para outro sítio*/
+    background: url(../img/bg1.jpeg);
     max-height: 800px;
 	background-size: cover;
 	background-position: center;
@@ -31,11 +31,6 @@ body, html{
     padding-left: 3em;
     padding-bottom: 1em;
     vertical-align:middle;
-}
-
-#topmenu.navbar h1{
-    color: azure;
-    
 }
 
 /*
