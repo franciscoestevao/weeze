@@ -34,8 +34,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <a href="action/logout.php" class="link"><p><img src="img/config.svg" height="10px">  Settings</p></a>  
                 </div>
             </div>
-            
             <div class="separator">
+            </div>
+            
+            <div class="list">
+                <a href="http://google.com"><p>Create Event</p></a>
+                <a href="http://google.com"><p>My Events</p></a>
             </div>
         </div>
 
