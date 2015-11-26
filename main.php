@@ -38,7 +38,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </div>
             
             <div class="list">
-                <a href="http://google.com"><p>Create Event</p></a>
+				<a href="events/redirect_create_event.php"><p>Create Event</p><a/>
                 <a href="http://google.com"><p>My Events</p></a>
             </div>
         </div>
