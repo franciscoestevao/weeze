@@ -42,7 +42,7 @@
             </div>
             
             <div class="list">
-                <a href="http://google.com"><p>My Events</p></a>
+                <a href="redirect_my_events.php"><p>My Events</p></a>
             </div>
         </div>
 
