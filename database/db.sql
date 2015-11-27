@@ -14,6 +14,8 @@ CREATE TABLE evento (
 	local 			VARCHAR,
 	descricao 		MEDIUMTEXT NOT NULL,
 	tipo 			VARCHAR NOT NULL,
-	imagem 			LONGBLOB NOT NULL
+	imagem 			LONGBLOB NOT NULL,
+	criador			VARCHAR NOT NULL,
+	FOREIGN KEY (criador) REFERENCES utilizador(username)
 	-- participantes SET
 );

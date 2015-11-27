@@ -20,6 +20,39 @@
         $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':imagem', $imagem);
+        $stmt->execute();
+        
+        $criador=$_SESSION['username'];
+        
+		/*$last_id=$db->lastInsertRowID();*/
+		
+		
+		$stmt = $db->prepare("SELECT last_insert_rowid()");
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		$last_id=$result;
+		
+		
+		
+		
+		/*
+		$schema="evento";
+				$stmt = $db->prepare("SELECT currval('$schema.id') as id");
+		$stmt->execute();
+		  // get next row as an array indexed by column name
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		$last_id=$result["id"];
+		*/
+		
+		/*
+		$last_id=sqlite_last_insert_rowid($db);
+		*/
+        
+        $stmt=$db->prepare("INSERT INTO user_creation (username, e_id) VALUES (:username,:e_id)");
+        $stmt->bindParam(':username', $criador);
+        $stmt->bindParam(':e_id', $last_id);
+        
+        
         
         if($stmt->execute()){  
             $_SESSION['loggedin'] = true;
