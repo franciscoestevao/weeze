@@ -67,11 +67,19 @@
 					</label>
 					<br>
 					<label>Tipo de evento
-						<input type="text" name="tipo_do_evento" class="input" id="tipo" autocomplete="off" required="true">
+						<!--<input type="text" name="tipo_do_evento" class="input" id="tipo" autocomplete="off" required="true">-->
+                        <select name="tipo_do_evento" class="input" id="tipo" required="true">
+                          <option value="party">Party</option>
+                          <option value="concert">Concert</option>
+                          <option value="sports">Sports</option>
+                          <option value="festival">Festival</option>
+                            <option value="other">Other</option>
+                        </select>
 					</label>
 					<br>
 					<label>Imagem do evento
 						<input type="file" name="imagem_do_evento" class="input" id="imagem" autocomplete="off" required="true" accept="image/*">
+                    
 					</label>
 					<br><br>	
 					<input id="button" type="submit" name="submit" class="button" value="Submit">
