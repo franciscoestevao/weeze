@@ -20,7 +20,8 @@ body, html{
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 #nav {
@@ -169,4 +170,31 @@ a {
     text-decoration: none;
     transition: 0.1s;
 }
+
+#section .event a{
+    background-color: #eeeeee;
+    padding: 1em;
+    width: 12em;
+    height: 4em;
+}
+
+#section .event a h1{
+    background-color: transparent;
+    font-size: 1em;
+    color: #19a4c2;
+    text-decoration: none;
+}
+
+#section .event a h1{
+    background-color: #eeeeee;
+    padding: 1em;
+    font-size: 1em;
+    color: #19a4c2;
+    text-decoration: none;
+    width: 12em;
+    height: 4em;
+    overflow: auto;
+}
+
+#
 </style>

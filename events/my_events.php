@@ -61,6 +61,15 @@
         <div id="section">
 			<h1>My Events</h1>
             
+            <div class="event">
+                <a href="google.com">
+                    <h1>Título</h1>
+                    <h2>xx/xx/xxxx</h2>
+                
+                </a>             
+            </div>
+            
+            
             <h1><?php echo count($result); ?></h1>
 			
 			
