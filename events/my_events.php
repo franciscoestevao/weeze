@@ -54,8 +54,6 @@
                 $stmt->execute();
                 $result = $stmt->fetchAll();
                 
-                //echo("ususu");
-                
                 ?>
                 
         <div id="section">
