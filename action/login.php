@@ -25,7 +25,7 @@ function Login()
             
         }  else{
             //echo "<script> window.location.assign('../index.html'); </script>";
-            header('Location: ../index.html');
+            header('Location: ../errors/login_error.php');
         }        
 }
 
