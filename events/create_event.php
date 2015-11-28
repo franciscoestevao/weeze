@@ -1,8 +1,7 @@
-
 <?php
-
-	include_once('../database/connection.php'); // connects to the database
 	session_start();                         // starts the session
+	include_once('../database/connection.php'); // connects to the database
+	
 	
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";

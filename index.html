@@ -17,9 +17,9 @@
         </nav>
         
         <div id="messageBox">
-            <h3>Be part of the largest network of events in the world.</h3> 
+            <h3>Be part of the largest network of events in the world</h3> 
             <div class="separator"></div>
-            <h2>Start Weezing.</h2>
+            <h2>Start Weezing</h2>
         </div>
          <div class="form-wrap">
                 <div class="tabs">

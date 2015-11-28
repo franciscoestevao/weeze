@@ -30,7 +30,7 @@
                 <div class="tabs-content">
                     <div id="signup-tab-content" class="active">
                         <form class="signup-form" action="../action/register.php" method="post">
-							<i><font color="red">Username já existente, tente outro</font></i>
+							<b><font color="red">Username já existente, tente outro</font></b>
 							<br><br>							
                             <input type="text" class="input" name="user" id="user_name" autocomplete="off" placeholder="Username" required="true">
                             <input type="text" class="input" name="nome" id="name" autocomplete="off" placeholder="Nome" required="true">

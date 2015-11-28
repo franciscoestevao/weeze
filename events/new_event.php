@@ -1,8 +1,7 @@
-
 <?php
-
-	include_once('../database/connection.php'); // connects to the database
 	session_start();                         // starts the session
+	include_once('../database/connection.php'); // connects to the database
+	
 	
 	function NewEvent(){
 		global $db;
@@ -25,9 +24,10 @@
 
         if($stmt->execute()){  
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username;
+            
             $_SESSION['img'] = $img;
             header('Location: my_events.php');
+            exit();
         }
         
         

@@ -40,7 +40,7 @@
 
                     <div id="login-tab-content" class="active">
                         <form class="login-form" action="../action/login.php" method="POST">
-							<i><font color="red">Username ou password inválidos</font></i>
+							<b><font color="red">Username ou password inválidos</font></b>
 							<br><br>
                             <input type="text" name="userLog" class="input" id="user_login" autocomplete="off" placeholder="Email or Username" required="true">
                             <input type="password" name="passLog" class="input" id="user_pass" autocomplete="off" placeholder="Password" required="true">
