@@ -47,28 +47,37 @@
             </div>
         </div>
                 <?php 
-                global $db;
-                $currUsername = $_SESSION['username'];
-                $stmt = $db->prepare("SELECT * FROM evento WHERE criador = '".$currUsername."'");
-
-                $stmt->execute();
-                $result = $stmt->fetchAll();
-                
+					global $db;
+					$currUsername = $_SESSION['username'];
+					
+					$stmt = $db->prepare("SELECT * FROM evento WHERE criador = :curruser");
+					$stmt->bindParam(':curruser', $currUsername);
+					$stmt->execute();
+					$result = $stmt->fetchAll();
                 ?>
                 
         <div id="section">
 			<h1>My Events</h1>
-            
-            <div class="event">
-                <a href="google.com">
-                    <h1>Título</h1>
-                    <h2>xx/xx/xxxx</h2>
-                
-                </a>             
-            </div>
-            
-            
-            <h1><?php echo count($result); ?></h1>
+			
+			<ul>
+					<?php
+						if(count($result)){
+						foreach ($result as $row){
+					?>
+					<div class="event">
+						<li>
+						<!--	<a href="<?php echo $row['link_url']; ?>">	-->
+								<h3><?php echo $row['nome']; ?></h3><h4>(<?php echo $row['tipo']; ?>)</h4>
+								<?php $thumb=$row['imagem']; ?>
+								<img src="<?php echo $thumb; ?>">
+								<h4><?php echo $row['data']; ?></h4>
+						<!--	</a>	-->
+						</li>
+					</div>
+					<?php }} ?>
+				</ul>
+         
+            <h5>Total of events: <?php echo count($result); ?></h1>
 			
 			
         </div>

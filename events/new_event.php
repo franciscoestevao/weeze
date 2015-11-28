@@ -23,9 +23,13 @@
         $stmt->bindParam(':imagem', $imagem);      
         $stmt->bindParam(':criador', $criador);
 
-        $stmt->execute();
-        echo "<script> window.location.assign('my_events.php'); </script>";
-        //header('Location: my_events.php');
+        if($stmt->execute()){  
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            $_SESSION['img'] = $img;
+            header('Location: my_events.php');
+        }
+        
         
         
 		/*$last_id=$db->lastInsertRowID();*/
@@ -57,14 +61,9 @@
         $stmt->bindParam(':username', $criador);
         $stmt->bindParam(':e_id', $last_id);
         
+        */
         
         
-        if($stmt->execute()){  
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username;
-            $_SESSION['img'] = $img;
-            header('Location: my_events.php');
-        }*/
 
 }
 

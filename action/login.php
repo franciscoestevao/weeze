@@ -9,7 +9,9 @@ function Login()
         $username=trim($_POST['userLog']);
 		$password=trim($_POST['passLog']);
 		
-        $stmt = $db->prepare("SELECT * FROM utilizador WHERE username = '".$username."' AND password = '".$password."'");
+        $stmt = $db->prepare("SELECT * FROM utilizador WHERE username = :user AND password = :pass");
+        $stmt->bindParam(':user', $username);
+        $stmt->bindParam(':pass', $password);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
         if(count($result)){

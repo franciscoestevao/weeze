@@ -13,7 +13,7 @@ function NewUser()
 	   	
             
     
-		if(strcmp($password,$cpassword)) {
+		if(strcmp($password,$cpassword)!==0) {
             echo "<script> window.location.assign('../errors/password_error.php'); </script>";
 			//header('Location: ../errors/password_error.php');
 		}
