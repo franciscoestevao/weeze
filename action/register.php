@@ -10,9 +10,12 @@ function NewUser()
 		$nome=trim($_POST['nome']);
 		$password=trim($_POST['pass']);
 		$cpassword=trim($_POST['cpass']);
-		
-		if($password !== $cpassword) {
-			header('Location: ../errors/password_error.php');
+	   	
+            
+    
+		if(strcmp($password,$cpassword)) {
+            echo "<script> window.location.assign('../errors/password_error.php'); </script>";
+			//header('Location: ../errors/password_error.php');
 		}
 		
 		$stmt = $db->prepare('SELECT username FROM utilizador');
