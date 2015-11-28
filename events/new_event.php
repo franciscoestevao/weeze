@@ -12,26 +12,31 @@
 		$descricao=trim($_POST['descricao_do_evento']);
 		$tipo=trim($_POST['tipo_do_evento']);
 		$imagem=trim($_POST['imagem_do_evento']);
+        $criador = $_SESSION['username'];
         
-        $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem)");
+        $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem,criador) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador)");
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':data', $data);
         $stmt->bindParam(':local', $local);
         $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':tipo', $tipo);
-        $stmt->bindParam(':imagem', $imagem);
+        $stmt->bindParam(':imagem', $imagem);      
+        $stmt->bindParam(':criador', $criador);
+
         $stmt->execute();
+        echo "<script> window.location.assign('my_events.php'); </script>";
+        //header('Location: my_events.php');
         
-        $criador=$_SESSION['username'];
         
 		/*$last_id=$db->lastInsertRowID();*/
 		
-		
+		/*
 		$stmt = $db->prepare("SELECT last_insert_rowid()");
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$last_id=$result;
 		
+       
 		
 		
 		
@@ -46,7 +51,7 @@
 		
 		/*
 		$last_id=sqlite_last_insert_rowid($db);
-		*/
+		
         
         $stmt=$db->prepare("INSERT INTO user_creation (username, e_id) VALUES (:username,:e_id)");
         $stmt->bindParam(':username', $criador);
@@ -59,7 +64,7 @@
             $_SESSION['username'] = $username;
             $_SESSION['img'] = $img;
             header('Location: my_events.php');
-        }
+        }*/
 
 }
 

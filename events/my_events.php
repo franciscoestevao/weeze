@@ -42,12 +42,26 @@
             </div>
             
             <div class="list">
-                <a href="redirect_create_event.php"><p>Create Event</p><a/>
+                <a href="create_event.php"><p>Create Event</p><a/>
+                <a href="../main.php"><p>All Events</p><a/>
             </div>
         </div>
+                <?php 
+                global $db;
+                $currUsername = $_SESSION['username'];
+                $stmt = $db->prepare("SELECT * FROM evento WHERE criador = '".$currUsername."'");
 
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                
+                //echo("ususu");
+                
+                ?>
+                
         <div id="section">
 			<h1>My Events</h1>
+            
+            <h1><?php echo count($result); ?></h1>
 			
 			
         </div>

@@ -42,7 +42,8 @@
             </div>
             
             <div class="list">
-                <a href="redirect_my_events.php"><p>My Events</p></a>
+                <a href="my_events.php"><p>My Events</p></a>
+                <a href="../main.php"><p>All Events</p></a>
             </div>
         </div>
 
@@ -73,7 +74,7 @@
 						<input type="file" name="imagem_do_evento" class="input" id="imagem" autocomplete="off" required="true" accept="image/*">
 					</label>
 					<br><br>	
-					<input id="button" type="submit" name="submit" class="button" value="Submeter">
+					<input id="button" type="submit" name="submit" class="button" value="Submit">
 			</form>
 			
         </div>
