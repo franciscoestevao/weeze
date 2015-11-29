@@ -10,7 +10,7 @@
 		$local=trim($_POST['local_do_evento']);
 		$descricao=trim($_POST['descricao_do_evento']);
 		$tipo=trim($_POST['tipo_do_evento']);
-		$imagem=trim($_POST['imagem_do_evento']);
+		$imagem=$_POST['imagem_do_evento'];
         $criador = $_SESSION['username'];
         
         $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem,criador) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador)");
@@ -24,47 +24,11 @@
 
         if($stmt->execute()){  
             $_SESSION['loggedin'] = true;
-            
             $_SESSION['img'] = $img;
             header('Location: my_events.php');
             exit();
         }
         
-        
-        
-		/*$last_id=$db->lastInsertRowID();*/
-		
-		/*
-		$stmt = $db->prepare("SELECT last_insert_rowid()");
-		$stmt->execute();
-		$result = $stmt->fetchAll();
-		$last_id=$result;
-		
-       
-		
-		
-		
-		/*
-		$schema="evento";
-				$stmt = $db->prepare("SELECT currval('$schema.id') as id");
-		$stmt->execute();
-		  // get next row as an array indexed by column name
-		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$last_id=$result["id"];
-		*/
-		
-		/*
-		$last_id=sqlite_last_insert_rowid($db);
-		
-        
-        $stmt=$db->prepare("INSERT INTO user_creation (username, e_id) VALUES (:username,:e_id)");
-        $stmt->bindParam(':username', $criador);
-        $stmt->bindParam(':e_id', $last_id);
-        
-        */
-        
-        
-
 }
 
 

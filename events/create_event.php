@@ -1,7 +1,7 @@
 <?php
-	session_start();                         // starts the session
-	include_once('../database/connection.php'); // connects to the database
 	
+	include_once('../database/connection.php'); // connects to the database
+	session_start();                         // starts the session
 	
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
@@ -48,7 +48,7 @@
 
         <div id="section">
 			<h1>New Event</h1>
-			<form class="new-event-form" action="new_event.php" method="post">
+			<form class="new-event-form" action="new_event.php" method="post" >
 					<label>Nome do evento
 						<input type="text" name="nome_do_evento" class="input" id="nome" autocomplete="off" required="true">
 					</label>

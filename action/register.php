@@ -11,8 +11,6 @@ function NewUser()
 		$password=trim($_POST['pass']);
 		$cpassword=trim($_POST['cpass']);
 	   	
-            
-    
 		if(strcmp($password,$cpassword)!==0) {
             echo "<script> window.location.assign('../errors/password_error.php'); </script>";
 			//header('Location: ../errors/password_error.php');
