@@ -58,12 +58,15 @@
 			$stmt->bindParam(':id', $id);
 			$stmt->execute();
 			$result = $stmt->fetchAll();
-
+            foreach ($result as $row){
+                $nome = $row['nome'];
+                
+            }
 		?>
        
                 
         <div id="section">
-			<h1>Name of the event: <?php echo $result['nome']; ?></h1>
+			<h1>Name of the event: <?php echo $nome ?></h1>
 			
         </div>
 
