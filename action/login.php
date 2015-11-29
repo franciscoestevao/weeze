@@ -23,7 +23,7 @@ function Login()
             $_SESSION['img']=$img;
             
             //echo "<script> window.location.assign('../main.php'); </script>";
-            header('Location: ../main.php');
+            header('Location: ../main/main.php');
             
         }  else{
             //echo "<script> window.location.assign('../index.html'); </script>";

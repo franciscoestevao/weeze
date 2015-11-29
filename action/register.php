@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 				$_SESSION['loggedin'] = true;
 				$_SESSION['username'] = $username;
 				$_SESSION['img'] = $img;
-				header('Location: ../main.php');
+				header('Location: ../main/main.php');
 			}
 		}
 }
