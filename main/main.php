@@ -65,11 +65,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 			?>
 			<div class="event">
 				<li>
-					<a href="#"><?php echo $row['nome']; ?> (Criador: <?php echo $row['criador']; ?>)</a>
-					<h4>(<?php echo $row['tipo']; ?>)</h4>
-					<?php $thumb=$row['imagem']; ?>
-					<img src="<?php echo $thumb; ?>">
-					<h4><?php echo $row['data']; ?></h4>
+					<a href="../events/event.php?id=<?php echo $row['id']; ?>">
+						<?php echo $row['nome']; ?> (Criador: <?php echo $row['criador']; ?>)
+						<h4>(<?php echo $row['tipo']; ?>)</h4>
+						<?php $thumb=$row['imagem']; ?>
+						<img src="<?php echo $thumb; ?>">
+						<h4><?php echo $row['data']; ?></h4>
+					</a>
 				</li>
 			</div>
 			<?php }} ?>

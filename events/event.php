@@ -9,6 +9,11 @@
 	else {
 		header('Location: ../errors/no_login_error.php');
 	}
+	
+	if (!isset($_GET["id"])) { 
+	  header('Location: my_events.php');
+	}
+		
 ?>
 
 <html>
@@ -45,39 +50,20 @@
                 <a href="../main/main.php"><p>All Events</p><a/>
             </div>
         </div>
-                <?php 
-					global $db;
-					$currUsername = $_SESSION['username'];
-					
-					$stmt = $db->prepare("SELECT * FROM evento WHERE criador = :curruser order by id DESC");
-					$stmt->bindParam(':curruser', $currUsername);
-					$stmt->execute();
-					$result = $stmt->fetchAll();
-                ?>
+       
+       <?php 
+			global $db;
+			$id=$_GET['id'];
+			$stmt = $db->prepare("SELECT * FROM evento WHERE id = :id");
+			$stmt->bindParam(':id', $id);
+			$stmt->execute();
+			$result = $stmt->fetchAll();
+
+		?>
+       
                 
         <div id="section">
-			<h1>My Events</h1>
-			
-			<ul>
-					<?php
-						if(count($result)){
-						foreach ($result as $row){
-					?>
-					<div class="event">
-						<li>
-								<a href="event.php?id=<?php echo $row['id']; ?>">
-								<h3><?php echo $row['nome']; ?></h3><h4>(<?php echo $row['tipo']; ?>)</h4>
-								<?php $thumb=$row['imagem']; ?>
-								<img src="<?php echo $thumb; ?>">
-								<h4><?php echo $row['data']; ?></h4>
-								</a>
-						</li>
-					</div>
-					<?php }} ?>
-				</ul>
-         
-            <h5>Total of events: <?php echo count($result); ?></h1>
-			
+			<h1>Name of the event: <?php echo $result['nome']; ?></h1>
 			
         </div>
 
@@ -88,3 +74,4 @@
 	</body>
 
 </html>
+
