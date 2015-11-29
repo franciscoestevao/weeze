@@ -49,7 +49,7 @@
 					global $db;
 					$currUsername = $_SESSION['username'];
 					
-					$stmt = $db->prepare("SELECT * FROM evento WHERE criador = :curruser");
+					$stmt = $db->prepare("SELECT * FROM evento WHERE criador = :curruser order by id DESC");
 					$stmt->bindParam(':curruser', $currUsername);
 					$stmt->execute();
 					$result = $stmt->fetchAll();
