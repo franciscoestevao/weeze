@@ -7,7 +7,7 @@
     //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 	}
 	else {
-		die("Please log in first to see this page.");
+		header('Location: ../errors/no_login_error.php');
 	}
 ?>
 
