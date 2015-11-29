@@ -48,7 +48,7 @@
 
         <div id="section">
 			<h1>New Event</h1>
-			<form class="new-event-form" action="new_event.php" method="post" >
+			<form class="new-event-form" action="new_event.php" method="post" enctype="multipart/form-data">
 					<label>Nome do evento
 						<input type="text" name="nome_do_evento" class="input" id="nome" autocomplete="off" required="true">
 					</label>
