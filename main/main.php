@@ -54,9 +54,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
         <div id="section">
         <h1>Latest Events</h1>
-        <p>
+        <h5>
 			Here are the latest events:
-        </p>
+        </h5>
         
         <ul>
 			<?php
