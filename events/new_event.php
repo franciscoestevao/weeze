@@ -53,8 +53,9 @@
 		$tipo=trim($_POST['tipo_do_evento']);
 		//$imagem=$_POST['imagem_do_evento'];
         $criador = $_SESSION['username'];
+        $privacidade = trim($_POST['privacidade']);
         
-        $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem, criador) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador)");
+        $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem, criador, privado) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador,:privado)");
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':data', $data);
         $stmt->bindParam(':local', $local);
@@ -62,6 +63,8 @@
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':imagem', $target_file);      
         $stmt->bindParam(':criador', $criador);
+        $stmt->bindParam(':privado', $privacidade);
+        
 
 		
 

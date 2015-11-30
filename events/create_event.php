@@ -75,7 +75,9 @@
                             <option value="other">Other</option>
                         </select>
 					</label>
-					<br>
+					<br><br>
+					<input type="checkbox" name="privacidade" class="input" id="privado" value="sim">Privado
+					<br><br>
 					<label>Imagem do evento
 						<input type="file" name="imagem_do_evento" class="input" id="imagem" autocomplete="off" required="true" accept="image/*">
                     
