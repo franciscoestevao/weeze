@@ -73,9 +73,22 @@
 			<h3><?php echo $data; ?></h3>
             <img src="<?php echo $imagem; ?>" onclick="window.open(this.src)" id="imagem-evento">
 			
-			<h4>Description: <?php echo $desc; ?></h4>
+			<h4><u>Description</u>:<br> <?php echo $desc; ?></h4>
+			
+			<?php
+				if($_SESSION['username'] === $row['criador']){
+			?>
+			
+			<form action='delete.php' method="post">
+				<input type="hidden" name="id" value="<?php echo $id?>">
+				<input type="submit" value="Delete" name="delete" onClick="return confirm('Tem a certeza que quer apagar este evento? Olhe que depois não há volta a dar...')">
+			</form>
+			
+			<?php } ?>
 			
         </div>
+        
+				
 
         <div id="footer">
         <p>weeze - event manager | developed by Francisco Estêvão & Tomás Tavares | © LTW FEUP 2015/2016</p> 
