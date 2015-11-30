@@ -60,13 +60,20 @@
 			$result = $stmt->fetchAll();
             foreach ($result as $row){
                 $nome = $row['nome'];
-                
+                $desc = $row['descricao'];
+                $imagem = $row['imagem'];
+                $data = $row['data'];
+                $tipo = $row['tipo'];
             }
 		?>
        
                 
         <div id="section">
-			<h1>Name of the event: <?php echo $nome ?></h1>
+			<h1><?php echo $nome; echo " ($tipo)"; ?></h1>
+			<h3><?php echo $data; ?></h3>
+            <img src="<?php echo $imagem; ?>">
+			
+			<h4>Description: <?php echo $desc; ?></h4>
 			
         </div>
 
