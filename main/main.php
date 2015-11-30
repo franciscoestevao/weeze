@@ -63,22 +63,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 				if(count($result)){
 				foreach ($result as $row){
 			?>
-             <?php $thumb=$row['imagem']; ?>
+             <div class="cont">
+                 <div class="contImg">
+              <?php $thumb=$row['imagem']; ?>
 						<img src="<?php echo $thumb; ?>">
+                </div>
 			<div class="event">
                
 				<li>
 					<a href="../events/event.php?id=<?php echo $row['id']; ?>">
                         <h4><?php echo $row['tipo']; ?></h4><br>
 						<h1><?php echo $row['nome']; ?></h1><br>
-						<h2><?php echo $row['data']; ?> | Hosted by: <?php echo $row['criador']; ?></h2>
-                        
-                        
+						<h2><?php echo $row['data']; ?> | Hosted by: <?php echo $row['criador']; ?></h2>   
 					</a>
                     
 				</li>
 			</div>
-            <br>
+            <br> 
+            </div>
+           
 			<?php }} ?>
 		</ul>
        
