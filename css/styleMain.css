@@ -258,12 +258,12 @@ a {
 }
 
 #section .cont .contImg img{
-    width: 100%;
+    max-width: 100%;
 }
 
-#section img{
-	max-width: 50%;
-	max-height: 50%;
+#section #imagem-evento{
+	max-width: 70%;
+	max-height: 70%;
 }
 
 
