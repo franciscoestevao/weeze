@@ -5,7 +5,16 @@
 
 	if(isset($_POST['submit'])){
 		
-		$target_dir = "../uploads/" . $_SESSION['username'];
+		$nome=trim($_POST['nome_do_evento']);
+		$data=trim($_POST['data_do_evento']);
+		$local=trim($_POST['local_do_evento']);
+		$descricao=trim($_POST['descricao_do_evento']);
+		$tipo=trim($_POST['tipo_do_evento']);
+		//$imagem=$_POST['imagem_do_evento'];
+        $criador = $_SESSION['username'];
+        $privacidade = trim($_POST['privacidade']);
+		
+		$target_dir = "../uploads/" . $_SESSION['username'] . $nome;
 		$target_file = $target_dir . basename($_FILES["imagem_do_evento"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -46,14 +55,7 @@
 		
 		
 		global $db;
-        $nome=trim($_POST['nome_do_evento']);
-		$data=trim($_POST['data_do_evento']);
-		$local=trim($_POST['local_do_evento']);
-		$descricao=trim($_POST['descricao_do_evento']);
-		$tipo=trim($_POST['tipo_do_evento']);
-		//$imagem=$_POST['imagem_do_evento'];
-        $criador = $_SESSION['username'];
-        $privacidade = trim($_POST['privacidade']);
+        
         
         $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem, criador, privado) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador,:privado)");
         $stmt->bindParam(':nome', $nome);
