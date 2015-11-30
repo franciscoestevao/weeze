@@ -69,11 +69,8 @@
        
                 
         <div id="section">
-			<h1><?php echo $nome; echo " ($tipo)"; ?></h1>
-			<h3><?php echo $data; ?></h3>
-            <img src="<?php echo $imagem; ?>" onclick="window.open(this.src)">
+			<h1>Edit: <?php echo $nome; ?></h1>
 			
-			<h4>Description: <?php echo $desc; ?></h4>
 			
         </div>
 
@@ -84,4 +81,5 @@
 	</body>
 
 </html>
+
 
