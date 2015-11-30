@@ -57,26 +57,30 @@
                 
         <div id="section">
 			<h1>My Events</h1>
+            <h5>Total of events: <?php echo count($result); ?></h5>
 			
 			<ul>
 					<?php
 						if(count($result)){
 						foreach ($result as $row){
 					?>
+                <?php $thumb=$row['imagem']; ?>
+                                <img src="<?php echo $thumb; ?>">
 					<div class="event">
 						<li>
+                                
 								<a href="event.php?id=<?php echo $row['id']; ?>">
-								<h3><?php echo $row['nome']; ?></h3><h4>(<?php echo $row['tipo']; ?>)</h4>
-								<?php $thumb=$row['imagem']; ?>
-								<img src="<?php echo $thumb; ?>">
-								<h4><?php echo $row['data']; ?></h4>
+                                <h4><?php echo $row['tipo']; ?></h4><br>
+								<h1><?php echo $row['nome']; ?></h1><br>
+								<h2><?php echo $row['data']; ?></h2>
+								
 								</a>
 						</li>
 					</div>
 					<?php }} ?>
 				</ul>
          
-            <h5>Total of events: <?php echo count($result); ?></h1>
+            
 			
 			
         </div>

@@ -61,7 +61,7 @@
 						<input type="text" name="local_do_evento" class="input" id="local" autocomplete="off">
 					</label>
 					<br>
-					<label>Descrição do evento
+					<label>Descrição do evento<br>
 						<textarea type="textarea" name="descricao_do_evento" class="input" id="descricao" autocomplete="off" required="true" placeholder="Insira um pequeno texto que descreva o evento" rows="5" cols="40"></textarea>
 					</label>
 					<br>
