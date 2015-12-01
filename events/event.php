@@ -13,6 +13,9 @@
 	if (!isset($_GET["id"])) { 
 	  header('Location: my_events.php');
 	}
+	
+	
+
 		
 ?>
 
@@ -79,10 +82,16 @@
 				if($_SESSION['username'] === $row['criador']){
 			?>
 			
+			<form action='edit.php?id=<?php echo $id; ?>' method="post">
+				<input type="hidden" name="id" value="<?php echo $id?>">
+				<input type="submit" name="edit" value="Edit" class="button">
+			</form>
+			
 			<form action='delete.php' method="post">
 				<input type="hidden" name="id" value="<?php echo $id?>">
-				<input type="submit" value="Delete" name="delete" onClick="return confirm('Tem a certeza que quer apagar este evento? Olhe que depois não há volta a dar...')">
+				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Tem a certeza que quer apagar este evento? Olhe que depois não há volta a dar...')">
 			</form>
+			
 			
 			<?php } ?>
 			
