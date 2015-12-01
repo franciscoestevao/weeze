@@ -114,6 +114,9 @@
 				</label>
 				<br><br>
 				<input type="hidden" name="id" value="<?php echo $id?>">
+				<a href="event.php?id=<?php echo $id;?>">
+					<input type="button" value="Cancel" class="button">
+				</a>
 				<input id="button" type="submit" name="submit" class="button" value="Submit">
 		</form>
 			
