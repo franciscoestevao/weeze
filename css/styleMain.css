@@ -95,6 +95,21 @@ a {
     transition: 0.3s;
 }
 
+#nav .filter form input.search{
+    border: 1px solid #19a4c2;
+    background: #FFFFFF;
+    width: 100%;
+}
+
+#nav .filter h3{
+    font-size: 0.8em;
+}
+
+#nav .filter p{
+    font-size: 0.8em;
+    color: #999999;
+}
+
 #nav .user{
     background: #eeeeee;
     padding: 1em;

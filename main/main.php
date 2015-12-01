@@ -42,6 +42,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 				<a href="../events/create_event.php"><p>Create Event</p></a>
                 <a href="../events/my_events.php"><p>My Events</p></a>
             </div>
+            
+            
+            <div class="separator"> </div>
+        
+            <div class="filter">
+                <h3>Search & Filter</h3>
+                <form action="../events/filter.php" method="post">
+				    <input type="text" name="search" class="input" id="search" autocomplete="off" required="false">
+                    <br><input type="checkbox" name="Party" value="Party"/><br><br>
+                    <input type="submit" id="button" name="formSubmit" value="Search" />
+                </form>
+            </div>
         </div>
         
         <?php 
