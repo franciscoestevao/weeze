@@ -92,8 +92,17 @@
 				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Tem a certeza que quer apagar este evento? Olhe que depois não há volta a dar...')">
 			</form>
 			
+			<form action="edit_action.php" method="post">
+				<label>Invite:
+					<input type="hidden" name="id" value="<?php echo $id?>">
+					<input type="text" name="convidado" class="input" id="convidado" autocomplete="off">
+					<input type="submit" name="invite" value="Invite" class="button">
+				</label>
+			</form>
 			
 			<?php } ?>
+			
+			
 			
         </div>
         

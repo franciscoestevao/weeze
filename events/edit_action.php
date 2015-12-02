@@ -53,10 +53,7 @@
 				echo "Sorry, there was an error uploading your file.";
 			}
 		}
-		
-		
-		
-        
+	
         
         $stmt = $db->prepare("UPDATE evento SET nome=:nome, data=:data, local=:local, descricao=:descricao, tipo=:tipo, imagem=:imagem, criador=:criador, privado=:privado WHERE id=:id");
         $stmt->bindParam(':nome', $nome);
@@ -73,6 +70,18 @@
         
         header('Location: event.php?id=' . $id);
 		
+	}
+	
+	if(isset($_POST['invite'])){
+		global $db;
+		$id = trim($_POST['id']);
+		$convidado = trim($_POST['convidado']);
+		$stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':convidado', $convidado);
+        $stmt->execute();
+        
+		header('Location: event.php?id=' . $id);
 	}
 	
 	
