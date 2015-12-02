@@ -34,7 +34,7 @@
                 <div class="info">
 					<h1>Welcome back, <?php echo $_SESSION['username'];?>!</h1>    
 					<a href="../action/logout.php" class="link"><p><img src="../img/logout.svg" height="10px">  Logout</p></a>
-					<a href="../action/logout.php" class="link"><p><img src="../img/config.svg" height="10px">  Settings</p></a>  
+					<a href="../action/settings.php" class="link"><p><img src="../img/config.svg" height="10px">  Settings</p></a> 
                 </div>
             </div>
             <div class="separator">
