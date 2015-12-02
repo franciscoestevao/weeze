@@ -15,7 +15,7 @@
         $privacidade = trim($_POST['privacidade']);
 		
 		$target_dir = "../uploads/" . $_SESSION['username'] . $nome;
-		$target_file = $target_dir . basename($_FILES["imagem_do_evento"]["name"]);
+		$target_file = $target_dir . trim(basename($_FILES["imagem_do_evento"]["name"]));
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image
