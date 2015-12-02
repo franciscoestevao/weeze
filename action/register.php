@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 			
 			
 			$img = rand(0,10);
-			
+			$password = md5($password);
 			$stmt = $db->prepare("INSERT INTO utilizador (username,nome,password,img) VALUES (:username,:nome,:password,:img)");
 			$stmt->bindParam(':username', $username);
 			$stmt->bindParam(':nome', $nome);

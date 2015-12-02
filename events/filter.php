@@ -47,16 +47,84 @@
         </div>
                 <?php 
 					global $db;
-                    $search==trim($_POST['search']);
+                    $search=trim($_POST['search']);
                     $party=trim($_POST['party']);
                     $concert=trim($_POST['concert']);
+                    $sports=trim($_POST['sports']);
                     $festival=trim($_POST['festival']);
                     $other=trim($_POST['other']);
+                    
                 
-					$currUsername = $_SESSION['username'];
+                    
+                
+                    $sqlSt = "SELECT * FROM evento WHERE ";
+                    
+                    if($search != ""){
+                        $sqlSt .= "nome LIKE '%".$search."%' AND (";
+                    }
+                
+                    if($party == "on"){
+                        $sqlSt .= " tipo = 'party'";
+                        $alt = true;
+                    }
+                    
+                    if($concert == "on"){
+                        if($alt){
+                        $sqlSt .= " OR tipo = 'concert'";   
+                        }
+                        else{
+                        $sqlSt .= " tipo = 'concert'"; 
+                        $alt = true;
+                        }
+                    }
+                
+                    if($sports == "on"){
+                        if($alt){
+                        $sqlSt .= " OR tipo = 'sports'";   
+                        }
+                        else{
+                        $sqlSt .= " tipo = 'sports'"; 
+                        $alt = true;
+                        }
+                    }
+                        
+                    if($festival == "on"){
+                        if($alt){
+                        $sqlSt .= " OR tipo = 'festival'";   
+                        }
+                        else{
+                        $sqlSt .= " tipo = 'festival'";
+                        $alt = true;
+                        }
+                    }
+                
+                
+                    if($other == "on"){
+                        if($alt){
+                        $sqlSt .= " OR tipo = 'other'";   
+                        }
+                        else{
+                        $sqlSt .= " tipo = 'other'";
+                        $alt = true;
+                        }
+                    }
+                
+                    
+                    
+                    if(!$alt){
+                        if($search != ""){
+                        $sqlSt = "SELECT * FROM evento WHERE nome LIKE '%".$search."%'";
+                        }else $sqlSt = "SELECT * FROM evento";
+                    }
 					
-					$stmt = $db->prepare("SELECT * FROM evento WHERE criador = :curruser order by id DESC");
-					$stmt->bindParam(':curruser', $currUsername);
+                    if($alt && ($search != "")){
+                        $sqlSt .= ")";
+                    }
+                
+                    $sqlSt .= " ORDER BY id DESC";
+                    
+					$stmt = $db->prepare($sqlSt);
+					//$stmt->bindParam(':curruser', $currUsername);
 					$stmt->execute();
 					$result = $stmt->fetchAll();
                 ?>

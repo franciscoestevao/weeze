@@ -8,7 +8,7 @@ function Login()
        global $db;
         $username=trim($_POST['userLog']);
 		$password=trim($_POST['passLog']);
-		
+		$password = md5($password);
         $stmt = $db->prepare("SELECT * FROM utilizador WHERE username = :user AND password = :pass");
         $stmt->bindParam(':user', $username);
         $stmt->bindParam(':pass', $password);
