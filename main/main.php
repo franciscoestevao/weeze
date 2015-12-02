@@ -17,9 +17,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 	<body>
 		<div id="header">
-           <img src="../img/logoTopWhite.png" height="25px">  
-            <a href="http://www.google.com"><p>Know more about this project</p></a><div id="knowMore">
-            
+            <img src="../img/logoTopWhite.png" height="25px">
+            <a href="http://www.google.com"><p>Know more about this project</p></a><div id="knowMore">    
         </div>
         </div>
         
@@ -48,12 +47,23 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <div class="filter">
                 <h3>Search & Filter</h3>
                 <form action="../events/filter.php" method="post">
-				    <input type="text" name="search" class="input" id="search" autocomplete="off" required="false">
-                    <br><input type="checkbox" name="Party"><p>Party</p>
-                    <br><input type="checkbox" name="Party">
-                    <br><input type="checkbox" name="Party">
-                    <br><input type="checkbox" name="Party">
-                    <input type="submit" id="button" name="formSubmit" value="Search" />
+				    <input type="text" name="search" class="input" id="search" autocomplete="on"><br>
+                    <input type="checkbox" name="party" id="party"/>
+                    <label for="party" class="txtchkbox">Party</label><br>
+                    
+                    <input type="checkbox" name="concert" id="concert"/>
+                    <label for="concert" class="txtchkbox">Concert</label><br>
+                    
+                    <input type="checkbox" name="sports" id="sports"/>
+                    <label for="sports" class="txtchkbox">Sports</label><br>
+                    
+                    <input type="checkbox" name="festival" id="festival"/>
+                    <label for="festival" class="txtchkbox">Festival</label><br>
+                    
+                    <input type="checkbox" name="other" id="other"/>
+                    <label for="other" class="txtchkbox">Other</label><br>
+                    
+                    <br><input type="submit" id="button" name="formSubmit" value="Search" />
                 </form>
             </div>
         </div>

@@ -95,6 +95,12 @@ a {
     transition: 0.3s;
 }
 
+#nav .filter .txtchkbox {
+    padding-left: 0.5em;
+    font-size: 0.8em;
+    color: #999999;
+ }
+
 #nav .filter form input.search{
     border: 1px solid #19a4c2;
     background: #FFFFFF;
