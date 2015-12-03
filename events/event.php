@@ -76,8 +76,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css"  href="../css/styleMain.css">
-        <script src="dist/sweetalert.min.js"></script> 
-        <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 	</head>
 
 	<body>

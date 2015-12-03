@@ -55,7 +55,7 @@
                     $other=trim($_POST['other']);
                     
                 
-                    
+                    $curruser = $_SESSION['username'];
                 
                     $sqlSt = "SELECT * FROM evento WHERE ";
                     
@@ -113,8 +113,8 @@
                     
                     if(!$alt){
                         if($search != ""){
-                        $sqlSt = "SELECT * FROM evento WHERE nome LIKE '%".$search."%'";
-                        }else $sqlSt = "SELECT * FROM evento";
+                        $sqlSt = "SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '%".$curruser."%' UNION SELECT * FROM evento WHERE criador = '%".$curruser."%' LIKE '%".$search."%'";
+                        }else $sqlSt = "SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '%".$curruser."%' UNION SELECT * FROM evento WHERE criador = '%".$curruser."%'";
                     }
 					
                     if($alt && ($search != "")){
