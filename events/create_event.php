@@ -43,6 +43,7 @@
             <div class="list">
                 <a href="my_events.php"><p>My Events</p></a>
                 <a href="../main/main.php"><p>All Events</p></a>
+                <a href="invited.php"><p>Invites</p></a>
             </div>
         </div>
 

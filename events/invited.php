@@ -43,7 +43,7 @@
             <div class="list">
                 <a href="create_event.php"><p>Create Event</p><a/>
                 <a href="../main/main.php"><p>All Events</p><a/>
-                <a href="invited.php"><p>Invites</p></a>
+                <a href="my_events.php"><p>My Events</p><a/>
             </div>
         </div>
                 <?php 
@@ -52,7 +52,7 @@
                     
                     //PAGINATION
                     // Find out how many items are in the table
-                    $stmt = $db->prepare('SELECT * FROM evento WHERE criador = :curruser');
+                    $stmt = $db->prepare('SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser');
                     // Bind the query params
                     $stmt->bindParam(':curruser', $currUsername);
                     $stmt->execute();
@@ -83,7 +83,7 @@
                 //echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
 
                     // Prepare the paged query
-                    $stmt = $db->prepare('SELECT * FROM evento WHERE criador = :curruser ORDER BY id DESC LIMIT :limit OFFSET :offset');
+                    $stmt = $db->prepare('SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser ORDER BY id DESC LIMIT :limit OFFSET :offset');
                     // Bind the query params
                     $stmt->bindParam(':curruser', $currUsername);
                     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -94,8 +94,8 @@
                 ?>
                 
         <div id="section">
-			<h1>My Events</h1>
-            <h5>Total of events: <?php echo count($result); ?></h5>
+			<h1>Invites</h1>
+            <h5>Total of invites: <?php echo count($result); ?></h5>
 			
 			   <div class="allevents">
             

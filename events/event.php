@@ -102,6 +102,7 @@
             <div class="list">
                 <a href="create_event.php"><p>Create Event</p><a/>
                 <a href="../main/main.php"><p>All Events</p><a/>
+                <a href="invited.php"><p>Invites</p></a>
             </div>
         </div>
 
