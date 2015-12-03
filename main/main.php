@@ -71,8 +71,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 			global $db;        
             //PAGINATION
             // Find out how many items are in the table
-            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser');
+            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser UNION SELECT * FROM evento WHERE criador = :curruser1');
             $stmt->bindParam(':curruser', $_SESSION['username']);
+            $stmt->bindParam(':curruser1', $_SESSION['username']);
             $stmt->execute();
             $result = $stmt->fetchAll();
             $total = count($result);
@@ -98,9 +99,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 
             // Prepare the paged query
-            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser ORDER BY id DESC LIMIT :limit OFFSET :offset');
+            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser UNION SELECT * FROM evento WHERE criador = :curruser1 ORDER BY id DESC LIMIT :limit OFFSET :offset');
             // Bind the query params
             $stmt->bindParam(':curruser', $_SESSION['username']);
+            $stmt->bindParam(':curruser1', $_SESSION['username']);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
