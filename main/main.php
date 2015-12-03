@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once('../database/connection.php'); // connects to the database
-
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
@@ -72,7 +71,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 			global $db;        
             //PAGINATION
             // Find out how many items are in the table
-            $total = $db->query('SELECT COUNT(*) FROM evento')->fetchColumn();
+            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser');
+            $stmt->bindParam(':curruser', $_SESSION['username']);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $total = count($result);
             $limit =9;
             $pages = ceil($total/$limit);
 
@@ -94,18 +97,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $nextlink = ($page < $pages) ? '<a href="?page=' . ($page + 1) . '" title="Next page">&rsaquo;</a> <a href="?page=' . $pages . '" title="Last page">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> <span class="disabled">&raquo;</span>';
 
 
-
             // Prepare the paged query
-            $stmt = $db->prepare('SELECT * FROM evento ORDER BY id DESC LIMIT :limit OFFSET :offset');
+            $stmt = $db->prepare('SELECT * FROM evento WHERE privado = "false" UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = :curruser ORDER BY id DESC LIMIT :limit OFFSET :offset');
             // Bind the query params
+            $stmt->bindParam(':curruser', $_SESSION['username']);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
-
             $result = $stmt->fetchAll();
-            
-            
-            
+        
         ?>
 
         <div id="section">
@@ -118,28 +118,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
            <ul>
 			<?php
 				if(count($result)){
-				foreach ($result as $row){
-					
-					
-					$stmt = $db->prepare("SELECT * FROM convidado WHERE id = :id");
-					$stmt->bindParam(':id', $row['id']);
-					$stmt->execute();
-					$resultado = $stmt->fetchAll();
-				
-					
-					foreach ($resultado as $coluna){
-						if($_SESSION['username'] === $coluna['convidado']){
-							$invite=1;
-							break;
-						}
-						else{
-							$invite=0;
-						}
-					}
-					
-			
-					if(($row['privado'] !== "true" or $_SESSION['username'] === $row['criador']) or ($row['privado'] === "true" and $invite === 1)) {
-			
+				foreach ($result as $row){	
 			?>
              <div class="cont">
                  <div class="contImg">
@@ -160,7 +139,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <br> 
             </div>
            
-			<?php }}} ?>
+			<?php }} ?>
 		</ul> 
             
         </div>
