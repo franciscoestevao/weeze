@@ -65,6 +65,8 @@
 		$imagem = $row['imagem'];
 		$data = $row['data'];
 		$tipo = $row['tipo'];
+        $local = $row['local'];
+        $privado = $row['privado'];
 	}
 	
 		
@@ -74,6 +76,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css"  href="../css/styleMain.css">
+        <script src="dist/sweetalert.min.js"></script> 
+        <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 	</head>
 
 	<body>
@@ -105,40 +109,33 @@
                 <a href="invited.php"><p>Invites</p></a>
             </div>
         </div>
-
                 
-        <div id="section">
-			<h1><?php echo $nome; echo " ($tipo)"; ?></h1>
-			<h3><?php echo $data; ?></h3>
-            <img src="<?php echo $imagem; ?>" onclick="window.open(this.src)" id="imagem-evento">
-			
-			<h4><u>Description</u>:<br> <?php echo $desc; ?></h4>
-			
-			<?php
+                
+    
+        <div id="navRight">
+                <?php
 				if($_SESSION['username'] === $row['criador']){
 			?>
-			
-			<form action='edit.php?id=<?php echo $id; ?>' method="post">
+			<h2>Manage your event:</h2>
+			<form action='edit.php?id=<?php echo $id; ?>' method="post" id="edit">
 				<input type="hidden" name="id" value="<?php echo $id?>">
 				<input type="submit" name="edit" value="Edit" class="button">
 			</form>
 			
 			<form action='delete.php' method="post">
 				<input type="hidden" name="id" value="<?php echo $id?>">
-				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Tem a certeza que quer apagar este evento?')">
+				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Are you sure?')">
 			</form>
-			
+			<h2>Invite friends:</h2>
 			<form action="edit_action.php" method="post">
-				<label>Invite:
 					<input type="hidden" name="id" value="<?php echo $id?>">
 					<input type="text" name="convidado" class="input" id="convidado" autocomplete="off">
 					<input type="submit" name="invite" value="Invite" class="button">
-				</label>
 			</form>
-			
+            
 			<?php } ?>
-			
-			<?php
+            
+            <?php
 			
 				$stmt = $db->prepare("SELECT * FROM participante WHERE id = :id");
 				$stmt->bindParam(':id', $_GET['id']);
@@ -167,13 +164,55 @@
 
 				if($registado===0 and ($row['privado'] === "false" or ($row['privado'] === "true" and ($_SESSION['username']===$row['criador'] or $invite===1)))){
 			?>
-			
+			<h2>Participate in this event:</h2>
 			<form action="participate.php" method="post">
 				<input type="hidden" name="id" value="<?php echo $_GET['id']?>">
 				<input type="submit" name="participate" value="Participate" class="button">
 			</form>
 			
 			<?php } ?>
+            
+            <?php
+            
+            $stmt = $db->prepare("SELECT * FROM convidado WHERE id = :id LIMIT 5");
+            $stmt->bindParam(':id', $_GET['id']);
+			$stmt->execute();
+			$resultado = $stmt->fetchAll();
+            
+            
+            if(count($resultado)){?>
+            <h2>Invited:</h2>
+            <?php
+					foreach ($resultado as $linha){?>
+						<h3><?php echo $linha['convidado']; ?></h3>
+						<?php }} ?>
+            
+            <?php
+            
+            $stmt = $db->prepare("SELECT * FROM participante WHERE id = :id LIMIT 5");
+            $stmt->bindParam(':id', $_GET['id']);
+			$stmt->execute();
+			$resultado = $stmt->fetchAll();
+            
+            
+            if(count($resultado)){?>
+            <h2>Going:</h2>
+            <?php
+					foreach ($resultado as $linha){?>
+						<h3><?php echo $linha['participante']; ?></h3>
+						<?php }} ?>
+            
+            
+            
+            
+        </div>
+                
+        <div id="sectionEvent">
+			<h1><?php echo $nome; ?></h1><?php if($privado == 'true'){?><img src="../img/private.svg" height="10px" id="private"><?php } ?>
+			<h3><?php echo $data." | ".$local." | ".$tipo; ?></h3>
+            <img src="<?php echo $imagem; ?>" onclick="window.open(this.src)" id="imagem-evento">
+			<br>
+			<h4><?php echo $desc; ?></h4>
 			
         </div>
         
