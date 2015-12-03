@@ -72,14 +72,35 @@
 		
 	}
 	
+	function userExists($user){
+		
+		global $db;
+		$stmt = $db->prepare("SELECT * FROM utilizador");
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		
+		foreach ($result as $row){
+			if($user === $row['username']){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+
+	}
+	
 	if(isset($_POST['invite'])){
 		global $db;
 		$id = trim($_POST['id']);
 		$convidado = trim($_POST['convidado']);
-		$stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':convidado', $convidado);
-        $stmt->execute();
+		
+		if (userExists($convidado) === 1){
+			$stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
+			$stmt->bindParam(':id', $id);
+			$stmt->bindParam(':convidado', $convidado);
+			$stmt->execute();
+		}
         
 		header('Location: event.php?id=' . $id);
 	}
