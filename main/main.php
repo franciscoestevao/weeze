@@ -94,8 +94,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $nextlink = ($page < $pages) ? '<a href="?page=' . ($page + 1) . '" title="Next page">&rsaquo;</a> <a href="?page=' . $pages . '" title="Last page">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> <span class="disabled">&raquo;</span>';
 
 
-            // Display the paging information
-        //echo '<div id="paging"><p>', $prevlink, ' Page ', $page, ' of ', $pages, ' pages, displaying ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' </p></div>';
 
             // Prepare the paged query
             $stmt = $db->prepare('SELECT * FROM evento ORDER BY id DESC LIMIT :limit OFFSET :offset');

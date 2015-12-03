@@ -13,6 +13,8 @@
 		//$imagem=$_POST['imagem_do_evento'];
         $criador = $_SESSION['username'];
         $privacidade = trim($_POST['privacidade']);
+        
+        if($privacidade == '') $privacidade = false;
 		
 		$target_dir = "../uploads/" . $_SESSION['username'] . $nome;
 		$target_file = $target_dir . trim(basename($_FILES["imagem_do_evento"]["name"]));

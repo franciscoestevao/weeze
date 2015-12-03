@@ -34,7 +34,7 @@
 	
 	
 	if(($privacidade === "true") && (!isset($result['convidado'])) && ($_SESSION['username'] !== $criador)){
-		header('Location: ../main/main.php');
+        header('Location: ../main/main.php');
 	}
 	
 	foreach ($result as $row){
