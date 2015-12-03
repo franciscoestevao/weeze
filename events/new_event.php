@@ -14,7 +14,7 @@
         $criador = $_SESSION['username'];
         $privacidade = trim($_POST['privacidade']);
         
-        if($privacidade == '') $privacidade = false;
+        if($privacidade == '') $privacidade = 'false';
 		
 		$target_dir = "../uploads/" . $_SESSION['username'] . $nome;
 		$target_file = $target_dir . trim(basename($_FILES["imagem_do_evento"]["name"]));
@@ -58,7 +58,6 @@
 		
 		
 		global $db;
-        
         
         $stmt = $db->prepare("INSERT INTO evento (nome, data, local, descricao, tipo, imagem, criador, privado) VALUES (:nome,:data,:local,:descricao,:tipo,:imagem,:criador,:privado)");
         $stmt->bindParam(':nome', $nome);
