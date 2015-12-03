@@ -32,10 +32,8 @@
 	$stmt->execute();
 	$result = $stmt->fetchAll();
 	
+	$convidado = $result['convidado'];
 	
-	if(($privacidade === "true") && (!isset($result['convidado'])) && ($_SESSION['username'] !== $criador)){
-        header('Location: ../main/main.php');
-	}
 	
 	foreach ($result as $row){
 		if($_SESSION['username'] === $row['convidado']){
@@ -48,9 +46,12 @@
 	}
 	
 	
-	if(($privacidade === "true") && ($invite === 0)){
+	if(($privacidade === "true") && (!isset($convidado)) && ($_SESSION['username'] !== $criador) && ($invite === 0)){
+
 		header('Location: ../main/main.php');
 	}
+	
+	
 	
 	
 	
