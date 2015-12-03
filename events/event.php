@@ -125,7 +125,7 @@
 			
 			<form action='delete.php' method="post">
 				<input type="hidden" name="id" value="<?php echo $id?>">
-				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Tem a certeza que quer apagar este evento? Olhe que depois não há volta a dar...')">
+				<input type="submit" name="delete" value="Delete" class="button" onClick="return confirm('Tem a certeza que quer apagar este evento?')">
 			</form>
 			
 			<form action="edit_action.php" method="post">
@@ -138,7 +138,42 @@
 			
 			<?php } ?>
 			
+			<?php
 			
+				$stmt = $db->prepare("SELECT * FROM participante WHERE id = :id");
+				$stmt->bindParam(':id', $_GET['id']);
+				$stmt->execute();
+				$resultado = $stmt->fetchAll();
+				
+				$part = $resultado['participante'];
+				
+				
+				if(count($resultado)){
+					foreach ($resultado as $linha){
+						if($_SESSION['username'] === $linha['participante']){
+							$registado=1;
+							break;
+						}
+						else{
+							$registado=0;
+						}
+					}
+				}
+				else{
+					$registado=0;
+				}
+			
+				
+
+				if($registado===0 and ($row['privado'] === "false" or ($row['privado'] === "true" and ($_SESSION['username']===$row['criador'] or $invite===1)))){
+			?>
+			
+			<form action="participate.php" method="post">
+				<input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+				<input type="submit" name="participate" value="Participate" class="button">
+			</form>
+			
+			<?php } ?>
 			
         </div>
         
