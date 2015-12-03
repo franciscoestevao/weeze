@@ -11,11 +11,61 @@
 	}
 	
 	if (!isset($_GET["id"])) { 
-	  header('Location: my_events.php');
+	  header('Location: ../main/main.php');
+	}
+	
+	global $db;
+	$id=$_GET['id'];
+	
+	$stmt = $db->prepare("SELECT * FROM evento WHERE id=:id");
+	$stmt->bindParam(':id', $id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	foreach ($result as $row){
+		$privacidade = $row['privado'];
+		$criador = $row['criador'];
 	}
 	
 	
-
+	$stmt = $db->prepare("SELECT * FROM convidado WHERE id = :id");
+	$stmt->bindParam(':id', $id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	
+	
+	if(($privacidade === "true") && (!isset($result['convidado'])) && ($_SESSION['username'] !== $criador)){
+		header('Location: ../main/main.php');
+	}
+	
+	foreach ($result as $row){
+		if($_SESSION['username'] === $row['convidado']){
+			$invite=1;
+			break;
+		}
+		else{
+			$invite=0;
+		}
+	}
+	
+	
+	if(($privacidade === "true") && ($invite === 0)){
+		header('Location: ../main/main.php');
+	}
+	
+	
+	
+	$stmt = $db->prepare("SELECT * FROM evento WHERE id = :id");
+	$stmt->bindParam(':id', $id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	foreach ($result as $row){
+		$nome = $row['nome'];
+		$desc = $row['descricao'];
+		$imagem = $row['imagem'];
+		$data = $row['data'];
+		$tipo = $row['tipo'];
+	}
+	
 		
 ?>
 
@@ -53,23 +103,7 @@
                 <a href="../main/main.php"><p>All Events</p><a/>
             </div>
         </div>
-       
-       <?php 
-			global $db;
-			$id=$_GET['id'];
-			$stmt = $db->prepare("SELECT * FROM evento WHERE id = :id");
-			$stmt->bindParam(':id', $id);
-			$stmt->execute();
-			$result = $stmt->fetchAll();
-            foreach ($result as $row){
-                $nome = $row['nome'];
-                $desc = $row['descricao'];
-                $imagem = $row['imagem'];
-                $data = $row['data'];
-                $tipo = $row['tipo'];
-            }
-		?>
-       
+
                 
         <div id="section">
 			<h1><?php echo $nome; echo " ($tipo)"; ?></h1>
