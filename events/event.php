@@ -212,6 +212,43 @@
             <img src="<?php echo $imagem; ?>" onclick="window.open(this.src)" id="imagem-evento">
 			<br>
 			<h4><?php echo $desc; ?></h4>
+            <br>
+            
+            
+            
+            
+            
+            <div class="comments">
+                <h1>Comments</h1>
+                
+                <?php 
+                
+                $stmt = $db->prepare("SELECT * FROM comentario WHERE id_evento = :id_evento");
+                $stmt->bindParam(':id_evento', $id);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll();
+                
+                if(count($resultado)){
+                foreach ($resultado as $linha){?>
+                <div class="oneComment">
+                <h2><?php echo $linha['username'].' said:'; ?></h2>
+                <p> <?php echo "&nbsp&nbsp&nbsp&nbsp".$linha['texto']; ?></p>
+                </div>
+
+                <?php }} ?>
+                
+                
+                <div class="separator">
+                </div>
+                
+                <form action="comment.php" method="post">
+                    <input type="hidden" name="id_evento" value="<?php echo $id?>">
+                    <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
+                    <textarea type="textarea" name="comentario" class="input" id="comentario" autocomplete="off" required="true" placeholder="Insert your comment." rows="5" cols="50"></textarea><br><br>
+					<input type="submit" name="submit" value="Submit" class="button">
+			     </form>
+                
+            </div>
 			
         </div>
         

@@ -50,23 +50,23 @@
         <div id="section">
 			<h1>New Event</h1>
 			<form class="new-event-form" action="new_event.php" method="post" enctype="multipart/form-data">
-					<label>Nome do evento
+					<label>Title
 						<input type="text" name="nome_do_evento" class="input" id="nome" autocomplete="off" required="true">
 					</label>
 					<br>
-					<label>Data do evento
+					<label>Date
 						<input type="date" name="data_do_evento" class="input" id="data" autocomplete="off" required="true">
 					</label>
 					<br>
-					<label>Local do evento
+					<label>Location
 						<input type="text" name="local_do_evento" class="input" id="local" autocomplete="off">
 					</label>
 					<br>
-					<label>Descrição do evento<br>
+					<label>Description<br>
 						<textarea type="textarea" name="descricao_do_evento" class="input" id="descricao" autocomplete="off" required="true" placeholder="Insira um pequeno texto que descreva o evento" rows="5" cols="40"></textarea>
 					</label>
 					<br>
-					<label>Tipo de evento
+					<label>Type
 						<!--<input type="text" name="tipo_do_evento" class="input" id="tipo" autocomplete="off" required="true">-->
                         <select name="tipo_do_evento" class="input" id="tipo" required="true">
                           <option value="party">Party</option>
@@ -77,9 +77,9 @@
                         </select>
 					</label>
 					<br><br>
-					<input type="checkbox" name="privacidade" class="input" id="privado" value="true">Privado
+					<input type="checkbox" name="privacidade" class="input" id="privado" value="true">Private
 					<br><br>
-					<label>Imagem do evento
+					<label>Image
 						<input type="file" name="imagem_do_evento" class="input" id="imagem" autocomplete="off" required="true" accept="image/*">
                     
 					</label>

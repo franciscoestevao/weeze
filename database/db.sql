@@ -19,3 +19,10 @@ CREATE TABLE evento (
 	FOREIGN KEY (criador) REFERENCES utilizador(username)
 	-- participantes SET
 );
+
+CREATE TABLE comentario (
+	id 				INTEGER PRIMARY KEY NOT NULL,
+	id_evento 		INTEGER NOT NULL,
+	texto 			VARCHAR NOT NULL,
+	username 		VARCHAR NOT NULL
+);

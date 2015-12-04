@@ -26,7 +26,6 @@ a {
 
 #nav {
     text-decoration: none;
-    height:100%;
     width:15%;
     float:left;
     padding-left: 1em;
@@ -35,6 +34,7 @@ a {
     border-color: #eeeeee;
     padding-right: 2em;
     position: relative;
+    height:100%;
 }
 #footer {
     margin-bottom: 0;
@@ -159,7 +159,7 @@ a {
 }
 
 #nav .separator{
-    height: 0.1px;
+    height: 1px;
     margin: 2em 0em 2em 0em;
     background-color: #eeeeee;
 }
@@ -289,6 +289,7 @@ a {
 #section #imagem-evento{
 	max-width: 70%;
 	max-height: 70%;
+    padding-bottom: 0.5em;
 }
 
 #section .allevents{
@@ -354,6 +355,47 @@ color: #999999;
     padding: 0.2em;
     display: inline-block;
     margin-left: 0.5em;
+}
+
+#sectionEvent .comments .separator{
+    width: 100%;
+    height: 1px;
+    background-color: #eeeeee;
+    margin: 1em 0 1em 0;
+}
+
+#sectionEvent .comments{
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+}
+
+#sectionEvent .comments h1{
+    font-family: 'Open Sans', sans-serif;
+    color: #19a4c2;
+    font-size: 1.3em;
+    margin: 1em 0 0 0;
+    display: inline-block;
+}
+
+#sectionEvent .comments .input {
+    width: 100%;
+}
+
+
+#sectionEvent .comments .oneComment{
+    width: 100%;
+}
+
+#sectionEvent .comments .oneComment h2{
+    font-size: 1em;
+    color: #999999;
+    margin-bottom: 0.3em;
+}
+
+#sectionEvent .comments .oneComment p{
+    font-size: 0.7em;
+    color: #999999;
+    margin: 0em;
 }
 
 #navRight{
