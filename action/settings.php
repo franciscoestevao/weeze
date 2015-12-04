@@ -50,14 +50,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <h1>Settings</h1>
             <h5>Change Password</h5>
             <form class="new-event-form" action="new_config.php" method="post" enctype="multipart/form-data">
-					<label>New password:
-						<input type="password" name="pass" class="input" id="pass" autocomplete="off" required="true">
-					</label><br>
-                    <label>Repeat new password:
-						<input type="password" name="cpass" class="input" id="pass" autocomplete="off" required="true">
-					</label>
-                    <br>
-					<input id="button" type="submit" name="submit" class="button" value="Submit">
+				<label>Current password:
+					<input type="password" name="old" class="input" id="pass" autocomplete="off" required="true">
+				</label><br>
+				<label>New password:
+					<input type="password" name="pass" class="input" id="pass" autocomplete="off" required="true">
+				</label><br>
+				<label>Repeat new password:
+					<input type="password" name="cpass" class="input" id="pass" autocomplete="off" required="true">
+				</label>
+				<br>
+				<input id="button" type="submit" name="submit" class="button" value="Submit">
 			</form>        
        
         </div>
