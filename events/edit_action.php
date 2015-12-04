@@ -72,6 +72,30 @@
 		
 	}
 	
+	function isInvited($user, $id){
+		
+		global $db;
+		$stmt = $db->prepare("SELECT * FROM convidado WHERE id=:id");
+		$stmt->bindParam(':id', $id);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		
+		if(count($result)){
+			foreach($result as $row){
+				if($user === $row['convidado']){
+					return 1;
+				}
+				else {
+					return 0;
+				}
+			}
+		}
+		else{
+			return 0;
+		}
+	}
+	
+	
 	function userExists($user){
 		
 		global $db;
@@ -95,14 +119,21 @@
 		$id = trim($_POST['id']);
 		$convidado = trim($_POST['convidado']);
 		
-		if (userExists($convidado) === 1){
+		
+		if (userExists($convidado) === 1 and isInvited($convidado, $id) === 0 ){
 			$stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
 			$stmt->bindParam(':id', $id);
 			$stmt->bindParam(':convidado', $convidado);
 			$stmt->execute();
+			
+			header('Location: event.php?id=' . $id);
+		}
+		
+		else{
+            echo '<script> alert("Utilizador não existe ou já está convidado");</script>';
+            echo "<script> window.location.assign('event.php?id=$id'); </script>";
 		}
         
-		header('Location: event.php?id=' . $id);
 	}
 	
 	
