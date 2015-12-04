@@ -53,15 +53,17 @@
                     $sports=trim($_POST['sports']);
                     $festival=trim($_POST['festival']);
                     $other=trim($_POST['other']);
+                    $curruser = $_SESSION['username'];
+                    
                     
                 
-                    $curruser = $_SESSION['username'];
-                
-                    $sqlSt = "SELECT * FROM evento WHERE ";
+                    //$sqlSt = "(SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '".$curruser."' UNION SELECT * FROM evento WHERE criador = '".$curruser."') WHERE ";
+                    
+                    
                     
                     if($search != ""){
                         $sqlSt .= "nome LIKE '%".$search."%' AND (";
-                    }
+                    }else $sqlSt .= "(";
                 
                     if($party == "on"){
                         $sqlSt .= " tipo = 'party'";
@@ -108,22 +110,43 @@
                         $alt = true;
                         }
                     }
-                
                     
-                    
-                    if(!$alt){
-                        if($search != ""){
-                        $sqlSt = "SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '%".$curruser."%' UNION SELECT * FROM evento WHERE criador = '%".$curruser."%' LIKE '%".$search."%'";
-                        }else $sqlSt = "SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '%".$curruser."%' UNION SELECT * FROM evento WHERE criador = '%".$curruser."%'";
-                    }
-					
+                    //CASO HAJA PESQUISA NA TEXTBOX E TICK
                     if($alt && ($search != "")){
                         $sqlSt .= ")";
+                        $completeSql = "SELECT * FROM evento WHERE privado = 'false' AND ".$sqlSt." UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '".$curruser."' AND ".$sqlSt." UNION SELECT * from evento WHERE criador = '".$curruser."' AND ".$sqlSt;
+                        
+                    }    
+                
+                    
+                    //CASO SO HAJA PESQUISA
+                    else if(!$alt && ($search != "")){
+                        $sqlSt = "nome LIKE '%".$search."%' ";
+                        $completeSql = "SELECT * FROM evento WHERE privado = 'false' AND ".$sqlSt." UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '".$curruser."' AND ".$sqlSt." UNION SELECT * from evento WHERE criador = '".$curruser."' AND ".$sqlSt; 
+                       // die("$completeSql");
+                
+                    }
+                    
+                    //CASO SO HAJA TICKS
+                    
+                    else if($alt && !($search != "")){
+                        $sqlSt .= ")";
+                        $completeSql = "SELECT * FROM evento WHERE privado = 'false' AND ".$sqlSt." UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '".$curruser."' AND ".$sqlSt." UNION SELECT * from evento WHERE criador = '".$curruser."' AND ".$sqlSt; 
+                       // die("$completeSql");
+                    }
+                    
+                    //CASO NAO HAJA TICKS NEM PESQUISA
+                    
+                    else if(!$alt && !($search != "")){
+                        $sqlSt .= ")";
+                        $completeSql = "SELECT * FROM evento WHERE privado = 'false' UNION SELECT id, nome, data, local, descricao, tipo, imagem, criador, privado FROM evento NATURAL JOIN convidado WHERE convidado = '".$curruser."' UNION SELECT * from evento WHERE criador = '".$curruser."'"; 
                     }
                 
-                    $sqlSt .= " ORDER BY id DESC";
+                    $completeSql .= " ORDER BY id DESC";
+                
+                    //die("$completeSql");
                     
-					$stmt = $db->prepare($sqlSt);
+					$stmt = $db->prepare($completeSql);
 					//$stmt->bindParam(':curruser', $currUsername);
 					$stmt->execute();
 					$result = $stmt->fetchAll();

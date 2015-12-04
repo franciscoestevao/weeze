@@ -40,6 +40,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 				<a href="../events/create_event.php"><p>Create Event</p></a>
                 <a href="../events/my_events.php"><p>My Events</p></a>
                 <a href="../events/invited.php"><p>Invites</p></a>
+                <a href="../events/participating.php"><p>Participating</p></a>
             </div>
             
             <div class="separator"> </div>
