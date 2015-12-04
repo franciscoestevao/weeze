@@ -1,5 +1,14 @@
+<html>
+	<head>
+	<script src="../sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css">
+	</head>
+</html>
+
+
 <?php
 
+	
 	include_once('../database/connection.php'); // connects to the database
 	session_start();                         // starts the session
 	
@@ -130,8 +139,15 @@
 		}
 		
 		else{
-            echo '<script> alert("Utilizador não existe ou já está convidado");</script>';
-            echo "<script> window.location.assign('event.php?id=$id'); </script>";
+			echo "<script>
+			swal({title: 'Error!',   text: 'Username does not exist or is already invited!',   type: 'error',   confirmButtonText: 'OK' }, function(){window.location.assign('event.php?id=$id'); });
+			</script>";
+			
+			
+			
+			
+            //echo '<script> alert("Utilizador não existe ou já está convidado");</script>';
+            //echo "<script> window.location.assign('event.php?id=$id'); </script>";
 		}
         
 	}
