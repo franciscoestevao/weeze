@@ -11,6 +11,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 <html>
 	<head>
+		<title>weeze</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css"  href="../css/styleMain.css">
 	</head>

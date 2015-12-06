@@ -1,7 +1,8 @@
 <html>
 	<head>
-	<script src="../sweetalert-master/dist/sweetalert.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css">
+		<title>weeze</title>
+		<script src="../sweetalert-master/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css">
 	</head>
 </html>
 
