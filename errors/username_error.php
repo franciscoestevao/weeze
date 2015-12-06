@@ -13,7 +13,6 @@
         
         <nav id="topmenu" class="navbar">
             <img src="../img/logoTop.png" height="40px">   
-            <a href="http://www.google.com"><p>Know more about this project</p></a><div id="knowMore">
         </nav>
         
         <div id="messageBox">
@@ -46,9 +45,6 @@
                             <input type="password" name="passLog" class="input" id="user_pass" autocomplete="off" placeholder="Password" required="true">
                             <input type="submit" id="button" class="button" name="login" value="Login">
                         </form><!--.login-form-->
-                        <div class="help-text">
-                            <p><a href="#">Forgot your password?</a></p>
-                        </div><!--.help-text-->
                     </div><!--.login-tab-content-->
                 </div><!--.tabs-content-->
             </div><!--.form-wrap-->
