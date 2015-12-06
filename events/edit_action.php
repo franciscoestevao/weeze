@@ -114,13 +114,13 @@
 		$result = $stmt->fetchAll();
 		
 		foreach ($result as $row){
-			if($user === $row['username']){
-				return 1;
-			}
-			else{
-				return 0;
+			if($user == $row['username']){
+                
+                return 1;
+                
 			}
 		}
+        return 0;
 
 	}
 	
@@ -130,13 +130,15 @@
 		$convidado = trim($_POST['convidado']);
 		
 		
-		if (userExists($convidado) === 1 and isInvited($convidado, $id) === 0 ){
-			$stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
+		if (userExists($convidado) === 1 and isInvited($convidado, $id) === 0){
+			
+            $stmt = $db->prepare("INSERT INTO convidado (id, convidado) VALUES (:id,:convidado)");
 			$stmt->bindParam(':id', $id);
 			$stmt->bindParam(':convidado', $convidado);
 			$stmt->execute();
-			
-			header('Location: event.php?id=' . $id);
+            $cheese ='Location: event.php?id=' . $id;
+            die("$cheese");
+    		header('Location: event.php?id=' . $id);
 		}
 		
 		else{

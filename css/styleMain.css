@@ -387,12 +387,14 @@ color: #999999;
 }
 
 #sectionEvent .comments .oneComment h2{
+    font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     color: #999999;
     margin-bottom: 0.3em;
 }
 
 #sectionEvent .comments .oneComment p{
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.7em;
     color: #999999;
     margin: 0em;
