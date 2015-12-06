@@ -18,16 +18,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	<body>
 		<div id="header">
             <img src="../img/logoTopWhite.png" height="25px">
-            <a href="http://www.google.com"><p>Know more about this project</p></a><div id="knowMore">    
         </div>
         </div>
         
 
         <div id="nav">
             <div class="user">
-                <div class="photo">
-                <h1><?php echo $_SESSION['img'];?></h1>
-                </div>
                 <div class="info">
                 <h1>Welcome back, <?php echo $_SESSION['username'];?>!</h1>    
                 <a href="../action/logout.php" class="link"><p><img src="../img/logout.svg" height="10px">  Logout</p></a>
