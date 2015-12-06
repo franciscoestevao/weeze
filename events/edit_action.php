@@ -136,9 +136,9 @@
 			$stmt->bindParam(':id', $id);
 			$stmt->bindParam(':convidado', $convidado);
 			$stmt->execute();
-            $cheese ='Location: event.php?id=' . $id;
-            die("$cheese");
-    		header('Location: event.php?id=' . $id);
+            echo "<script>
+			swal({title: 'Success!',   text: 'User invited successfully!',   type: 'success',   confirmButtonText: 'OK' }, function(){window.location.assign('event.php?id=$id'); });
+			</script>";
 		}
 		
 		else{

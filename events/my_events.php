@@ -102,7 +102,7 @@
 				if(count($result)){
 				foreach ($result as $row){
                     if (strlen($row['nome'])>27){
-                        $row['nome'] = substr($row['nome'], 0, 25);
+                        $row['nome'] = substr($row['nome'], 0, 22);
                         $row['nome'] = $row['nome'].'...';
                     }
 			?>
